@@ -1,0 +1,72 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,500&family=Roboto:ital,wght@0,400;1,300&display=swap');
+* {
+  padding:0;
+  margin:0;
+
+}
+
+main {
+  background-color:yellow;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+
+form {
+  border: 2px solid red;
+  width:25%;
+  margin-left:30%;
+  padding:5%;
+
+
+
+}
+
+form p {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  color:red;
+}
+
+form p label {
+  margin-top:5px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  color:red;
+}
+
+form p:not(:first-child)
+{
+  margin-top:25px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+
+}
+
+form p input:not(input[type="button"]) {
+  width:300px;
+  height:25px;
+  border:2px solid black;
+  border-radius:10px;
+}
+
+form p input[type="button"]
+{
+  width:100px;
+  height:25px;
+  margin-left:62%;
+  border-radius:5px;
+  border:none;
+  background-color:red;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  color:white;
+}
+form p input[type="button"]:hover {
+  cursor:pointer;
+}
+
+form p a {
+  color:blue;
+  padding-left:5px;
+}
