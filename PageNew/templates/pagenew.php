@@ -15,6 +15,8 @@
    ?>
   </main>
 <?php include_once "../../wrapper/wrapper-footer.php"; ?>
+<script type="text/javascript" src="../JSpageNew/JSpageNew.js">
 
+</script>
 </body>
 </html>

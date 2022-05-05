@@ -112,25 +112,6 @@ for (element of blockDataId)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.onload = function()
 {
 
