@@ -10,6 +10,9 @@
 <body>
 <?php include_once "../../wrapper/wrapper-header.php"; ?>
 <main>
+  <?php
+  echo $_GET["id"];
+   ?>
   </main>
 <?php include_once "../../wrapper/wrapper-footer.php"; ?>
 
