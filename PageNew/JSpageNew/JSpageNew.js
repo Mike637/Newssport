@@ -3,7 +3,7 @@ let id = document.location.search;
 
 function detailViewNew(idParameter)
 {
-  let main = document.querySelector("main");
+  let container = document.querySelector(".container");
   data = "";
   fetch("../includes/PageNewView.includes.php"+idParameter,{
    method:"GET",
@@ -12,7 +12,7 @@ function detailViewNew(idParameter)
   then(response =>  {
     data+=`${response.img_title}`;
 
-main.innerHTML = data;
+container.innerHTML = data;
 
 
 })
