@@ -31,11 +31,14 @@ var sessionEmail = "<?php echo $_SESSION['email'] ?>";
 
 </div>
 
+
+
   </main>
 
 <?php include_once "../../wrapper/wrapper-footer.php"; ?>
 
 <script type="text/javascript" src="../JSpageNew/JSpageNew.js"></script>
 <script type="text/javascript" src="../JSpageNew/addComment.js"></script>
+<script type="text/javascript" src="../JSpageNew/deleteComment.js"></script>
 </body>
 </html>

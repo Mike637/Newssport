@@ -62,9 +62,78 @@ function commentGet(idParameter)
   fetch("../includes/GetComments.includes.php"+ idParameter,{
    method:"GET",
   }).
-  then(response => response.text()).
+  then(response => response.json()).
   then(response =>   {
-    data += response;
-    comments.innerHTML = data;
+
+    for (var key =0; key < response.length;key++)
+    {
+
+
+      var div = document.createElement("div");
+      div.className = "commentBlock";
+      div.setAttribute("data-id",response[key].sportComments_id);
+
+      var p_AuthComment = document.createElement("p");
+      p_AuthComment.className = "authorComment";
+
+      p_AuthComment.innerText = `Автор: ${response[key].sportComments_author}`;
+
+      div.appendChild(p_AuthComment);
+
+      var p_TextComment = document.createElement("p");
+      p_TextComment.className = "textComment";
+      p_TextComment.innerText = `Комментарий: ${response[key].sportComments_text}`;
+      div.appendChild(p_TextComment);
+
+
+      if (p_AuthComment.innerText.substr(6).trim() == sessionEmail)
+      {
+
+
+        var a = document.createElement("a");
+        a.innerText = "Редактировать";
+        a.setAttribute("href","#");
+        a.className="editComment";
+
+        div.appendChild(a);
+        var a = document.createElement("a");
+        a.innerText = "Удалить";
+        a.setAttribute("href","#");
+          a.className="deleteComment";
+
+        div.appendChild(a);
+
+      }
+
+      comments.appendChild(div);
+
+
+    }
+
+deletecomments();
+
 })
+}
+
+
+function deletecomments()
+{
+  var deleteComment = document.getElementsByClassName("deleteComment");
+  var commentblock = document.getElementsByClassName("commentblock");
+
+
+
+  for (var key=0;key< deleteComment.length;key++)
+
+  {
+    deleteComment[key].addEventListener('click',function()
+  {
+/*
+dataId = commentblock[key].getAttribute('data-id');
+console.log(dataId);
+*/
+console.log(key);
+  })
+  }
+
 }
