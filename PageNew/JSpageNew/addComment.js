@@ -21,7 +21,9 @@ commentAdd(new_id);
 this.selectionStart = 0;
 commentAdd(new_id);
 this.value = '';
+
 window.location.reload();
+
   }
   }
 
@@ -47,7 +49,7 @@ function commentAdd(idParameter)
    body:formdata
   }).
   then(response => response.text()).
-  then(response =>  console.log(response))
+  then(response =>  alert(response))
 }
 
 
@@ -67,6 +69,7 @@ function commentGet(idParameter)
 
     for (var key =0; key < response.length;key++)
     {
+
 
 
       var div = document.createElement("div");
@@ -111,29 +114,97 @@ function commentGet(idParameter)
     }
 
 deletecomments();
-
+editcomments();
 })
+
 }
 
 
 function deletecomments()
 {
   var deleteComment = document.getElementsByClassName("deleteComment");
-  var commentblock = document.getElementsByClassName("commentblock");
 
 
 
-  for (var key=0;key< deleteComment.length;key++)
+for (element of deleteComment)
+{
+  /*
 
-  {
-    deleteComment[key].addEventListener('click',function()
-  {
-/*
-dataId = commentblock[key].getAttribute('data-id');
-console.log(dataId);
-*/
-console.log(key);
+  */
+element.onclick = function()
+{
+  var parentBlockId = this.parentElement.getAttribute("data-id");
+  fetch("../includes/DeleteComments.includes.php?id="+ parentBlockId,{
+   method:"GET",
+  }).
+  then(response => response.text())
+  .then(response => {
+    alert(response);
+ window.location.reload();
   })
+
+
+}
+}
+
+}
+
+
+
+
+function editcomments()
+{
+  var editComment = document.getElementsByClassName("editComment");
+
+
+
+for (element of editComment)
+{
+
+
+
+element.onclick = function()
+
+{
+parentBlock=this.parentElement;
+console.log(parentBlock.childNodes[1].innerText.substr(12).trim());
+  var parentBlockId = parentBlock.getAttribute("data-id");
+
+
+  var div = document.createElement("div");
+  div.className = "form";
+  div.setAttribute("data-id",parentBlockId);
+  var form = document.createElement("form");
+  var textarea = document.createElement("textarea");
+  textarea.value = parentBlock.childNodes[1].innerText.substr(12).trim();
+  var button = document.createElement("button");
+  button.innerText = "Обновить";
+  form.appendChild(textarea);
+
+  form.appendChild(button);
+  div.appendChild(form);
+  parentBlock.replaceWith(div);
+
+  button.onclick = function()
+  {
+    parentBlock.childNodes[1].innerText = "Комментарий: " + textarea.value
+
+div.replaceWith(parentBlock);
+
   }
+  /*
+  fetch("../includes/DeleteComments.includes.php?id="+ parentBlockId,{
+   method:"GET",
+  }).
+  then(response => response.text())
+  .then(response => {
+    alert(response);
+ window.location.reload();
+  })
+
+*/
+}
+
+}
 
 }
