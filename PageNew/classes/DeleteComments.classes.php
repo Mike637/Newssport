@@ -7,9 +7,7 @@ class DeleteComments extends Dbh
 {
   public function commentsDelete()
   {
-    /*
-    echo "Привет мир".$_GET['id'];
-    */
+    
 
     $sql = "DELETE  FROM `sportcomments` WHERE `sportComments_id`=:sportComments_id";
     $stmt = $this->connect()->prepare($sql);

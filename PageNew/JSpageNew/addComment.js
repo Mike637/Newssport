@@ -15,11 +15,11 @@ addComment.addEventListener('keydown',function(event)
 window.location.href = "../../registration_login/templates/login.php";
   }
   else {
-    /*
+
 commentAdd(new_id);
-*/
+
 this.selectionStart = 0;
-commentAdd(new_id);
+
 this.value = '';
 
 window.location.reload();
@@ -40,16 +40,15 @@ function commentAdd(idParameter)
 {
   formdata = new FormData();
   formdata.append("text",addComment.value.trim());
-  /*
-  let container = document.querySelector(".container");
-  data = "";
-  */
+
   fetch("../includes/AddComments.includes.php"+ idParameter,{
    method:"POST",
    body:formdata
   }).
   then(response => response.text()).
   then(response =>  alert(response))
+
+
 }
 
 
@@ -166,8 +165,8 @@ for (element of editComment)
 element.onclick = function()
 
 {
-parentBlock=this.parentElement;
-console.log(parentBlock.childNodes[1].innerText.substr(12).trim());
+var parentBlock=this.parentElement;
+var textcomment = parentBlock.childNodes[1];
   var parentBlockId = parentBlock.getAttribute("data-id");
 
 
@@ -177,32 +176,73 @@ console.log(parentBlock.childNodes[1].innerText.substr(12).trim());
   var form = document.createElement("form");
   var textarea = document.createElement("textarea");
   textarea.value = parentBlock.childNodes[1].innerText.substr(12).trim();
-  var button = document.createElement("button");
-  button.innerText = "Обновить";
+  var btnUpdate = document.createElement("button");
+  btnUpdate.innerText = "Обновить";
+  var btnCancel = document.createElement("button");
+  btnCancel.innerText ="Отменить";
   form.appendChild(textarea);
 
-  form.appendChild(button);
+  form.appendChild(btnUpdate);
+  form.appendChild(btnCancel);
   div.appendChild(form);
-  parentBlock.replaceWith(div);
 
-  button.onclick = function()
+textcomment.replaceWith(div);
+
+btnCancel.onclick = function()
+{
+  div.replaceWith(textcomment);
+}
+
+  btnUpdate.onclick = function()
   {
-    parentBlock.childNodes[1].innerText = "Комментарий: " + textarea.value
+  textcomment.innerText = "Комментарий: " + textarea.value
 
-div.replaceWith(parentBlock);
-
-  }
-  /*
-  fetch("../includes/DeleteComments.includes.php?id="+ parentBlockId,{
-   method:"GET",
+div.replaceWith(textcomment);
+  formdata = new FormData();
+  formdata.append("text",textarea.value.trim());
+  fetch("../includes/EditComments.includes.php?id="+ parentBlockId,{
+   method:"POST",
+   body:formdata
   }).
   then(response => response.text())
   .then(response => {
     alert(response);
- window.location.reload();
+
   })
 
-*/
+window.location.reload();
+
+  }
+
+  textarea.onkeydown = function(event)
+  {
+
+  if (event.key == 'Enter')
+  {
+    textcomment.innerText = "Комментарий: " + textarea.value
+
+  div.replaceWith(textcomment);
+    formdata = new FormData();
+    formdata.append("text",textarea.value.trim());
+    fetch("../includes/EditComments.includes.php?id="+ parentBlockId,{
+     method:"POST",
+     body:formdata
+    }).
+    then(response => response.text())
+    .then(response => {
+      alert(response);
+
+    })
+
+  window.location.reload();
+  }
+  }
+
+
+
+
+
+
 }
 
 }

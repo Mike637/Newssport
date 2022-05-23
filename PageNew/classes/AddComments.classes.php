@@ -16,7 +16,7 @@ $this->text = $text;
   {
     session_start();
 
-    $sql = "INSERT INTO sportcomments(sportComment_author,sportComments_text,sportComments_New_id) VALUES(?,?,?)";
+    $sql = "INSERT INTO sportcomments(sportComments_author,sportComments_text,sportComments_New_id) VALUES(?,?,?)";
   $stmt = $this->connect()->prepare($sql);
 
   try {
