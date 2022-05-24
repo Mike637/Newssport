@@ -24,43 +24,56 @@ class Log extends Dbh {
 
   public function login() {
 /*
-$hashedPwd = password_hash($this->pwd,PASSWORD_DEFAULT);
-*/
-try {
-  /*
-  $sql = "SELECT * FROM users WHERE `users_email`=:? AND `users_pwd`=:?";
-
-  $sql = "SELECT * FROM users WHERE users_email=:?"
-  $sql="SELECT `id` FROM registration WHERE `email`=:email and `password`=:pass";
-  $query->execute(["email" => $email, "pass" => $pass]);
-  */
-
-  $sql = "SELECT * FROM users WHERE `users_email`=:users_email AND `users_pwd`=:users_pwd";
+$sql = "SELECT * FROM users WHERE `users_email`=:users_email AND `users_pwd`=:users_pwd";
 $stmt = $this->connect()->prepare($sql);
-/*
-$stmt->execute(array($this->email,$this->pwd));
-*/
+
 
 $stmt->execute(["users_email" => $this->email, "users_pwd" => $this->pwd]);
+*/
+try {
+
+
+  $sql = "SELECT * FROM users WHERE `users_email`=:users_email";
+$stmt = $this->connect()->prepare($sql);
+
+
+$stmt->execute(["users_email" => $this->email]);
 
 
 
 if ($stmt->rowCount() == 0)
 {
+  $stmt = null;
   echo "Такого пользователя не существует";
   exit();
 }
 
+$note = $stmt->fetchAll();
+$users_pwd = $note[0]['users_pwd'];
+/*
+$checkpwd = password_verify($this->pwd,$users_pwd);
+*/
+if ($this->pwd != $users_pwd)
+{
+
+
+print_r("Неверный пароль".' '.$this->pwd.' '.$users_pwd);
+$stmt = null;
+exit();
+}
+
 session_start();
 $_SESSION["email"] = $this->email;
-$_SESSION["pwd"] = $this->pwd;
 $stmt = null;
 echo "Вы успешно вошли в систему";
-} catch (\Exception $e) {
+
+}
+catch (\Exception $e) {
 echo "Ошибка авторизации {$e->getMessage()}";
 exit();
 }
 $stmt = null;
+
   }
 
 
