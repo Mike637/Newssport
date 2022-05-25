@@ -107,3 +107,14 @@ else {
 
 
 }
+
+
+function RegTraining(str,substr)
+{
+const regExp = new RegExp(substr);
+console.log(regExp.test(str));
+
+}
+
+
+RegTraining('22 January',/\d\d\d/);

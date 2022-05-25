@@ -23,13 +23,7 @@ class Log extends Dbh {
 
 
   public function login() {
-/*
-$sql = "SELECT * FROM users WHERE `users_email`=:users_email AND `users_pwd`=:users_pwd";
-$stmt = $this->connect()->prepare($sql);
 
-
-$stmt->execute(["users_email" => $this->email, "users_pwd" => $this->pwd]);
-*/
 try {
 
 
@@ -57,7 +51,7 @@ if ($this->pwd != $users_pwd)
 {
 
 
-print_r("Неверный пароль".' '.$this->pwd.' '.$users_pwd);
+print_r("Неверный пароль");
 $stmt = null;
 exit();
 }
