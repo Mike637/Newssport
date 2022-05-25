@@ -15,6 +15,8 @@ let password_repeat = document.querySelector(".password_repeat");
 
 let error = '';
 
+
+
 button.onclick = function()  {
 
 
@@ -24,17 +26,17 @@ formdata.append('surname',surname.value);
 formdata.append('email',email.value);
 formdata.append('password',password.value);
 formdata.append('password_repeat',password_repeat.value);
+errorInput();
+if (errorInput() == false)
 
-emptyInput();
-console.log(error);
-console.log(emptyInput());
-if (emptyInput() == false)
 {
-  alert(error)
+  alert(error);
 }
 
-else
-{
+
+else {
+
+
 
 
 return fetch("../includes/reg.includes.php",{
@@ -61,19 +63,47 @@ else
 }
 
 
-function emptyInput()
+function errorInput()
 
 {
 
-  if (name.value != '' || surname.value != '' || email.value != '' || password.value != '' || password_repeat.value != '')
+
+  if (name.value == '' || surname.value == '' || email.value == '' || password.value == '' || password_repeat.value == '')
 
   {
      error = "Заполните пустые поля";
-    return false;
-  }
+     return false
+      }
 
-  else
-  {
-    return true;
-  }
+else if (password.value != password_repeat.value)
+{
+  error = "Пароли не совпадают";
+  return false
+}
+
+else if (name.value.length <=3)
+{
+  error = "Имя слишком короткое";
+  return false
+}
+
+else if (surname.value.length <=3)
+{
+  error = "Фамилия слишком короткая";
+  return false
+}
+
+else if (password.value.length <=3)
+{
+  error = "Пароль слишком короткий";
+  return false
+}
+
+else {
+  return true
+
+}
+
+
+
 }
