@@ -99,6 +99,12 @@ else if (password.value.length <=3)
   return false
 }
 
+else if (/^[a-z0-9]+[\.\-\_]?[a-z0-9]+@[a-z]+\.[a-z]+$/gm.test(email.value) == false)
+{
+  error = "некорректный почтовый ящик";
+  return false
+}
+
 else {
   return true
 
@@ -108,13 +114,14 @@ else {
 
 }
 
-
+/*
 function RegTraining(str,substr)
 {
-const regExp = new RegExp(substr);
-console.log(regExp.test(str));
+
+console.log(substr.test(str));
 
 }
 
 
-RegTraining('22 January',/\d\d\d/);
+RegTraining('owen7@list.ru',/^[a-z0-9]+[\.\-\_]?[a-z0-9]+@[a-z]+\.[a-z]+$/gm);
+*/
