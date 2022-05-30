@@ -1,0 +1,94 @@
+/*----------------------- GENERAL STYLES--------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+
+
+* {
+  padding:0;
+  margin:0;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+a {
+  text-decoration:none;
+
+
+}
+
+.header_fixed_position {
+  position:fixed;
+  z-index:10;
+}
+
+/*--------------------------------HEADER STYLES------------------------------------------*/
+
+
+header {
+  width:90%;
+  background-color:blue;
+  padding:0 5%;
+  display:flex;
+  justify-content: space-around;
+}
+
+
+
+header .reg_login,header .account_exit
+{
+  display:flex;
+}
+
+.LOGO p, .reg_login p, .account_exit p , .main p {
+width:200px;
+text-align:center;
+padding:20px 0;}
+
+.LOGO p:hover, .reg_login p:hover, .main p:hover,.account_exit p:hover
+{
+  background-color:#40E0D0;
+  cursor:pointer;
+}
+
+
+.LOGO p a, .reg_login p a, .main p a, .account_exit p a  {
+
+  font-weight:800;
+  color:#FAFAD2;
+}
+
+
+
+/*--------------------------------footer------------------------------------------*/
+
+
+
+footer {
+
+  width:90%;
+  height:100px;
+padding:0 5%;
+background-color:blue;
+
+}
+
+
+footer .up_arrow i {
+width:50px;
+height:50px;
+border-radius:50%;
+background-color:white;
+text-align:center;
+cursor:pointer;
+transition: transform 600ms ease;
+line-height:45px;
+margin-top:15px;
+
+}
+
+footer .up_arrow i:hover {
+  transform:translateY(-10px);
+}
