@@ -2,19 +2,31 @@
 
 
 let file = document.querySelector('input[type = "file"]');
+let title = document.querySelector('input[type = "text"]');
 
-var object = new File(['new file'],'filename.txt')
+let textarea = document.querySelector('textarea');
+
+
 
 
 
 button = document.querySelector('button[type = "button"]');
 
-console.log(button);
+formdata = new FormData();
 
-file.files = object;
 
 button.onclick = function()
 {
-  console.log(file.files[0]);
+  formdata.append('title',title.value);
+formdata.append('text',textarea.value);
+formdata.append('photo',file.files[0]);
 
+
+return fetch("../includes/formUpdateNews.includes.php" + document.location.search,{
+  method:"POST",
+  body:formdata,
+}).
+then(response => response.text()).
+then(response => console.log(response))
 }
+console.log(document.location.search);
