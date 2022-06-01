@@ -27,6 +27,6 @@ return fetch("../includes/formUpdateNews.includes.php" + document.location.searc
   body:formdata,
 }).
 then(response => response.text()).
-then(response => console.log(response))
+then(response => alert(response));
 }
 console.log(document.location.search);
