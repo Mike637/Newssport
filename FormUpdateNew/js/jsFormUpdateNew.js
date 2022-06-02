@@ -29,4 +29,3 @@ return fetch("../includes/formUpdateNews.includes.php" + document.location.searc
 then(response => response.text()).
 then(response => alert(response));
 }
-console.log(document.location.search);

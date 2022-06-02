@@ -16,9 +16,20 @@ function detailViewNew(idParameter)
 data+=`<a href = "../../FormUpdateNew/templates/formUpdateNew.php${idParameter}">редактировать</a>`;
 data +=`<br>`;
 data+=`<br>`;
-data+=`<a href = >удалить</a>`;
+data+=`<a data-id = "${response.img_id}" href="#">удалить</a>`;
 container.innerHTML = data;
+var hrefDelete = document.querySelector('a[data-id]');
 
+hrefDelete.onclick = function()
+{
+  var id = this.getAttribute("data-id");
+  fetch(`../includes/DeleteNews.includes.php${idParameter}`,
+  {
+    method:"GET";
+  }).
+  then(response => response.text()).
+  then(response => alert(response))
+}
 
 })
 }

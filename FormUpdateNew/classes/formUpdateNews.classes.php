@@ -8,22 +8,47 @@ private $title;
 
 private $text;
 
-public function __construct($title,$text)
+private  $photoname;
+
+private  $phototmp_name;
+
+public function __construct($title,$text,$photoname,$phototmp_name)
 
 {
   $this->title = $title;
   $this->text = $text;
+  $this->photoname = $photoname;
+  $this->phototmp_name = $phototmp_name;
 }
 
-  public function UpdateNew($title,$text)
-  {/*
-    $sql = "SELECT * FROM `img` WHERE `img_id`=:img_id";
-    $stmt = $this->connect()->prepare($sql);
-    $stmt->execute(["img_id" => $_GET["id"]]);
-    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+private function SelectNew()
+{
+  $sql = "SELECT * FROM `img` WHERE `img_id`=:img_id";
+  $stmt = $this->connect()->prepare($sql);
+  $stmt->execute(["img_id" => $_GET["id"]]);
+  $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    var_dump($data["img_id"]);
-    */
+  return $data["img_photoname"];
+}
+
+private function DeletePicture()
+{
+ unlink("../../Add_News/img/".$this->SelectNew());
+}
+
+private function AddNewPicture()
+{
+
+
+move_uploaded_file($this->phototmp_name,"../../Add_News/img/".time().$this->photoname);
+
+
+}
+
+
+
+  public function UpdateNew()
+  {
 
 $update_columns = array();
 $arrayKeys = array();
@@ -40,9 +65,15 @@ if (!empty($this->text))
   $arrayKeys[] ="img_text";
   $arrayValues[] =$this->text;
 }
+if (!empty($this->photoname))
+{
+  $update_columns[] ="img_photoname= :img_photoname";
+  $arrayKeys[] = "img_photoname";
+  $arrayValues[] = time().$this->photoname;
+}
 
 
-if (empty($this->text) && empty($this->title))
+if (empty($this->text) && empty($this->title) && empty($this->photoname))
 {
   echo "Новость осталась без изменений";
   die();
@@ -50,17 +81,20 @@ if (empty($this->text) && empty($this->title))
 
 $arrayKeysValues = array_combine($arrayKeys,$arrayValues);
 
-
+    $this->DeletePicture();
     $sql = "UPDATE img SET " .implode(",",$update_columns). " WHERE img_id= :img_id";
     $stmt = $this->connect()->prepare($sql);
 
 
 
     $stmt->execute(["img_id" => $_GET["id"]] + $arrayKeysValues);
-    echo "Новость успешно обновлена";
+    if (!empty($this->phototmp_name))
+    {
+        $this->AddNewPicture();
+    }
 
     $stmt = null;
-
+    echo "Новость успешно обновлена";
   }
 }
 

@@ -10,10 +10,10 @@ $phototmp_name = $_FILES["photo"]["tmp_name"];
 
 require_once("../classes/formUpdateNews.classes.php");
 
-$objectFormUpdateNews = new FormUpdateNews($title,$text);
+$objectFormUpdateNews = new FormUpdateNews($title,$text,$photoname,$phototmp_name);
 
 
-$objectFormUpdateNews->UpdateNew($title,$text);
+$objectFormUpdateNews->UpdateNew();
 
 
 
