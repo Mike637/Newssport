@@ -31,6 +31,7 @@ window.location.reload();
 
 window.onload = function()
 {
+
   commentGet(new_id);
 }
 
@@ -87,33 +88,35 @@ function commentGet(idParameter)
       p_TextComment.innerText = `Комментарий: ${response[key].sportComments_text}`;
       div.appendChild(p_TextComment);
 
-
       if (p_AuthComment.innerText.substr(6).trim() == sessionEmail)
       {
 
-
+        var span = document.createElement("span");
         var a = document.createElement("a");
         a.innerText = "Редактировать";
-        a.setAttribute("href","#");
+
         a.className="editComment";
 
-        div.appendChild(a);
+        span.appendChild(a);
         var a = document.createElement("a");
         a.innerText = "Удалить";
-        a.setAttribute("href","#");
-          a.className="deleteComment";
 
-        div.appendChild(a);
+          a.className="deleteComment";
+          span.appendChild(a)
+        div.appendChild(span);
 
       }
+
+      var hr = document.createElement("hr");
+      div.appendChild(hr);
 
       comments.appendChild(div);
 
 
     }
-
-deletecomments();
 editcomments();
+deletecomments();
+
 })
 
 }
@@ -132,7 +135,7 @@ for (element of deleteComment)
   */
 element.onclick = function()
 {
-  var parentBlockId = this.parentElement.getAttribute("data-id");
+  var parentBlockId = this.parentElement.parentElement.getAttribute("data-id");
   fetch("../includes/DeleteComments.includes.php?id="+ parentBlockId,{
    method:"GET",
   }).
@@ -165,8 +168,11 @@ for (element of editComment)
 element.onclick = function()
 
 {
-var parentBlock=this.parentElement;
+var parentSpan=this.parentElement;
+
+var parentBlock=parentSpan.parentElement;
 var textcomment = parentBlock.childNodes[1];
+
   var parentBlockId = parentBlock.getAttribute("data-id");
 
 
@@ -175,22 +181,32 @@ var textcomment = parentBlock.childNodes[1];
   div.setAttribute("data-id",parentBlockId);
   var form = document.createElement("form");
   var textarea = document.createElement("textarea");
+  textarea.className = "UpdateComment";
   textarea.value = parentBlock.childNodes[1].innerText.substr(12).trim();
   var btnUpdate = document.createElement("button");
+  btnUpdate.className = "UpdateClickBtn";
   btnUpdate.innerText = "Обновить";
   var btnCancel = document.createElement("button");
+  btnCancel.className = "DeleteClickBtn";
   btnCancel.innerText ="Отменить";
+var br = document.createElement("br");
+var br = document.createElement("br");
   form.appendChild(textarea);
+form.appendChild(br);
 
   form.appendChild(btnUpdate);
+  form.appendChild(br);
   form.appendChild(btnCancel);
+
   div.appendChild(form);
 
 textcomment.replaceWith(div);
+parentSpan.style.display = "none";
 
 btnCancel.onclick = function()
 {
   div.replaceWith(textcomment);
+  parentSpan.style.display = "inline-block";
 }
 
   btnUpdate.onclick = function()
@@ -209,7 +225,7 @@ div.replaceWith(textcomment);
     alert(response);
 
   })
-
+  parentSpan.style.display = "inline-block";
 window.location.reload();
 
   }
@@ -233,8 +249,8 @@ window.location.reload();
       alert(response);
 
     })
+parentSpan.style.display = "inline-block";
 
-  window.location.reload();
   }
   }
 

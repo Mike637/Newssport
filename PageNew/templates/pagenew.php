@@ -27,6 +27,7 @@ var sessionEmail = "<?php echo $_SESSION['email'] ?>";
    <form  action="index.html" method="post">
 <textarea class="addComment" name="commentText" rows="8" cols="80" placeholder = "Добавить комментарий...."></textarea>
    </form>
+   <hr>
 <div class="comments">
 
 </div>
@@ -39,6 +40,13 @@ var sessionEmail = "<?php echo $_SESSION['email'] ?>";
 
 <script type="text/javascript" src="../JSpageNew/JSpageNew.js"></script>
 <script type="text/javascript" src="../JSpageNew/addComment.js"></script>
-<script type="text/javascript" src="../JSpageNew/deleteComment.js"></script>
+
+
+
+
+
+
+
+
 </body>
 </html>
