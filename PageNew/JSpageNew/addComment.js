@@ -189,14 +189,15 @@ var textcomment = parentBlock.childNodes[1];
   var btnCancel = document.createElement("button");
   btnCancel.className = "DeleteClickBtn";
   btnCancel.innerText ="Отменить";
-var br = document.createElement("br");
-var br = document.createElement("br");
+  var p = document.createElement("p");
+  p.className = "Buttons";
   form.appendChild(textarea);
-form.appendChild(br);
 
-  form.appendChild(btnUpdate);
-  form.appendChild(br);
-  form.appendChild(btnCancel);
+p.appendChild(btnUpdate);
+p.appendChild(btnCancel);
+  form.appendChild(p);
+
+
 
   div.appendChild(form);
 

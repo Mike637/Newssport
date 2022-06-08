@@ -87,6 +87,15 @@ margin-top:5px;
   border-radius:8px;
 }
 
+p.Buttons
+{
+  margin-left:250px;
+  padding-left:20px;
+}
+
+.DeleteClickBtn {
+  margin-left:30px;
+}
 
 .UpdateClickBtn, .DeleteClickBtn {
 

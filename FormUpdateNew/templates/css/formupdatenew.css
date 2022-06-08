@@ -1,0 +1,110 @@
+main {
+  background-color:yellow;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:5%;
+}
+
+
+form {
+  border: 2px solid red;
+  width:25%;
+  margin-left:30%;
+  padding:5%;
+
+
+
+}
+
+form p:not(.file) {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  color:red;
+}
+
+form  label:not(label[for="text"], label[for="title"]) {
+  margin-top:5px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  color:white;
+}
+
+
+form label[for="text"], form label[for="title"]
+{
+  font-weight:bold;
+}
+
+form p:not(:first-child)
+{
+  margin-top:25px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+
+}
+
+form  textarea {
+  width:300px;
+  border:2px solid black;
+  border-radius:10px;
+}
+
+form input:not(input[type="file"]) {
+  width:300px;
+  height:25px;
+  border:2px solid black;
+  border-radius:10px;
+}
+
+form  button
+{
+  width:100px;
+  height:25px;
+  margin-left:65%;
+  margin-top:10px;
+  border-radius:5px;
+  border:none;
+  background-color:red;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:400;
+  color:white;
+}
+
+form p.file
+{
+  border:2px solid blue;
+  position:relative;
+  width:50%;
+  height:25px;
+  overflow:hidden;
+  text-align:center;
+
+  border-radius:10px;
+  line-height: 1.5;
+    margin-left:45%;
+  background-color:blue;
+
+
+}
+
+form p.file:hover {
+  background-color:rgb(38, 110, 120);
+
+}
+
+
+form p input[type="file"]
+
+{
+
+  position:absolute;
+  transform:scale(50);
+  opacity: 0;
+z-index:1;
+
+
+}
+
+form p input[type="file"]:hover {
+  cursor:pointer;
+}

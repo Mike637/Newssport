@@ -1,3 +1,15 @@
+
+<?php
+
+session_start();
+if (!isset($_SESSION['email']))
+{
+  header("Location:    ../../registration_login/templates/login.php");
+  exit();
+
+}
+
+ ?>
 <!DOCTYPE HTML>
 <html lang="ru">
   <head>
@@ -19,13 +31,12 @@
 <br>
 <label for="text">Редактируйте текст</label>
 <textarea name="text" class="text" rows="8" cols="80"></textarea>
-<br>
-<br>
-<input type="file" name="" value="http://localhost/Newssport/Add_News/img/1651088886CriRo.jpg" >
-<br>
-<p class="pictureName"></p>
-<br>
-<button class="button" type="button" name="button">Click</button>
+
+<p class="file"><input type="file" name="file">
+<label for="photo">Выберете фото</label>
+</p>
+
+<button class="button" type="button" name="button">Редактировать</button>
   </form>
 
 </main>

@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+if (!isset($_SESSION['email']))
+{
+  header("Location:    ../../registration_login/templates/login.php");
+  exit();
+
+}
+
+ ?>
 <!DOCTYPE HTML>
 <html lang="ru">
   <head>

@@ -53,6 +53,8 @@ move_uploaded_file($this->phototmp_name,"../../Add_News/img/".time().$this->phot
 $update_columns = array();
 $arrayKeys = array();
 $arrayValues = array();
+
+
 if (!empty($this->title))
 {
   $update_columns[] ="img_title= :img_title";
@@ -67,6 +69,7 @@ if (!empty($this->text))
 }
 if (!empty($this->photoname))
 {
+  $this->DeletePicture();
   $update_columns[] ="img_photoname= :img_photoname";
   $arrayKeys[] = "img_photoname";
   $arrayValues[] = time().$this->photoname;
@@ -81,7 +84,7 @@ if (empty($this->text) && empty($this->title) && empty($this->photoname))
 
 $arrayKeysValues = array_combine($arrayKeys,$arrayValues);
 
-    $this->DeletePicture();
+
     $sql = "UPDATE img SET " .implode(",",$update_columns). " WHERE img_id= :img_id";
     $stmt = $this->connect()->prepare($sql);
 

@@ -26,11 +26,16 @@ if (!response.ok)
 
 
  jsonResponse = await response.json();
- data+=`${jsonResponse.img_title}`;
-data+=`<a href = "../../FormUpdateNew/templates/formUpdateNew.php${idParameter}">редактировать</a>`;
-data +=`<br>`;
-data+=`<br>`;
-data+=`<a data-id = "${jsonResponse.img_id}" href="#">удалить</a>`;
+ data+=`<h1>${jsonResponse.img_title}</h1>`;
+ data += `<div class="img">`;
+ data += `<img src="../../Add_News/img/${jsonResponse.img_photoname}" alt="picture_is_not_found">`;
+ data +=`</div>`;
+ data += `<h3 id="text">${jsonResponse.img_text}</h3>`;
+data+= `<div class="links">`;
+data +=`<a class="Edit" href = "../../FormUpdateNew/templates/formUpdateNew.php${idParameter}">Редактировать</a>`;
+
+data +=`<a class="Delete" data-id = "${jsonResponse.img_id}">Удалить</a>`;
+data +="<div>";
 container.innerHTML = data;
 var hrefDelete = document.querySelector('a[data-id]');
 
