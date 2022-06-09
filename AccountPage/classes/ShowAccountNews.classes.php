@@ -7,7 +7,7 @@ class ShowAccountNews extends Dbh {
   public function AccountNewsAdd()
   {
     session_start();
-    $sql = "SELECT * FROM `img` WHERE `img_author`=:img_author";
+    $sql = "SELECT * FROM `img` WHERE `img_author`=:img_author ORDER BY `img_time` DESC";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute(["img_author" => $_SESSION["email"]]);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -6,7 +6,7 @@ class ShowNews extends Dbh {
 
   public function NewsAdd()
   {
-    $sql = "SELECT * FROM `img`";
+    $sql = "SELECT * FROM `img` ORDER BY `img_time` DESC";
     $stmt = $this->connect()->query($sql);
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

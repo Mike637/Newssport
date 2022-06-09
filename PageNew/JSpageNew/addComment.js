@@ -59,8 +59,7 @@ function commentGet(idParameter)
 {
 
   let comments = document.querySelector(".comments");
-  data = "";
-
+comments.appendChild(document.createElement("hr"));
   fetch("../includes/GetComments.includes.php"+ idParameter,{
    method:"GET",
   }).
