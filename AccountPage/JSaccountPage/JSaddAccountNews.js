@@ -28,7 +28,15 @@ then(response => {
     </div>`;
   }
 data +='</div>';
-main.innerHTML = data;
+if (data == '<div class=Bottom_content></div>')
+{
+  main.innerHTML = '<h2>К сожалению, у вас нет ни одной добавленной новости</h2>Хотите <a href="../../Add_News/templates/addNews.php">Добавить новость?</a>';
+}
+else
+ {
+  main.innerHTML = data;
+}
+
 
 BlockDataIdOnClick()
 })
