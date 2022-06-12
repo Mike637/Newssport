@@ -23,7 +23,13 @@ if (!isset($_SESSION['email']))
 <?php include_once "../../wrapper/wrapper-header.php"; ?>
 
 <main>
-  <form class="form"  >
+  <div class="imgContent">
+
+  </div>
+  <div class="formContent">
+
+
+    <form class="form"  >
     <br>
 <label for="title">Редактируйте заголовок</label>
 <input type="text" name="title" class="title" value="">
@@ -38,10 +44,11 @@ if (!isset($_SESSION['email']))
 
 <button class="button" type="button" name="button">Редактировать</button>
   </form>
-
+</div>
 </main>
 <?php include_once "../../wrapper/wrapper-footer.php"; ?>
 
   <script src="../js/jsFormUpdateNew.js"></script>
+    <script src="../js/jsGetContentOfNew.js"></script>
 </body>
 </html>

@@ -28,12 +28,12 @@ private function SelectNew()
   $stmt->execute(["img_id" => $_GET["id"]]);
   $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  return $data["img_photoname"];
+  return $data;
 }
 
 private function DeletePicture()
 {
- unlink("../../Add_News/img/".$this->SelectNew());
+ unlink("../../Add_News/img/".$this->SelectNew()["img_photoname"]);
 }
 
 private function AddNewPicture()
@@ -50,18 +50,33 @@ move_uploaded_file($this->phototmp_name,"../../Add_News/img/".time().$this->phot
   public function UpdateNew()
   {
 
+    if (empty($this->title))
+    {
+      echo "Поле заголовок - пустое";
+      exit();
+    }
+
+
+    if (empty($this->text))
+    {
+      echo "Текстовое поле - пустое";
+      exit();
+    }
+
 $update_columns = array();
 $arrayKeys = array();
 $arrayValues = array();
 
 
-if (!empty($this->title))
+
+
+if ($this->title != $this->SelectNew()["img_title"])
 {
   $update_columns[] ="img_title= :img_title";
   $arrayKeys[] ="img_title";
   $arrayValues[] =$this->title;
 }
-if (!empty($this->text))
+if ($this->text != $this->SelectNew()["img_text"])
 {
   $update_columns[] ="img_text= :img_text";
   $arrayKeys[] ="img_text";
@@ -76,7 +91,7 @@ if (!empty($this->photoname))
 }
 
 
-if (empty($this->text) && empty($this->title) && empty($this->photoname))
+if ($this->title == $this->SelectNew()["img_title"] && $this->text == $this->SelectNew()["img_text"] && empty($this->photoname))
 {
   echo "Новость осталась без изменений";
   die();
