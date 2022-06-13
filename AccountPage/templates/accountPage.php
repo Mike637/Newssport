@@ -23,9 +23,13 @@ if (!isset($_SESSION['email']))
 <body>
   <?php include_once "../../wrapper/wrapper-header.php"; ?>
   <main>
+<div class="accountData">
 
+</div>
 
+<div class="accountNews">
 
+</div>
 </main>
 <?php include_once "../../wrapper/wrapper-footer.php"; ?>
 

@@ -1,22 +1,31 @@
 main {
-
+  display:flex;
   width:90%;
 padding:0 5%;
 background-color:yellow;
 }
 
 
+main .accountData
+{
+  border:2px solid black;
+  width:40%;
+  height:300px;
+}
+
 
 main  .Bottom_content {
-
-  width:100%;
-display:flex;
+border:2px solid black;
+  width:30%;
+  height:330px;
+display:block;
 flex-direction:row;
 flex-wrap: wrap;
   justify-content: space-between;
 
 grid-template-columns: repeat(3,1fr);
   margin-top:0px;
+  overflow:scroll;
 }
 
 main .Bottom_content .Container_Bottom_content

@@ -183,7 +183,9 @@ grid-template-columns: repeat(3,1fr);
 main .Bottom_content .Container_Bottom_content
 {
   width:25%;
+
   border:2px solid silver;
+  
   height:550px;
 overflow:hidden;
 cursor:pointer;

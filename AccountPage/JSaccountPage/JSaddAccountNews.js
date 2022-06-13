@@ -1,6 +1,31 @@
+
+let accountNews = document.querySelector(".accountNews");
+let accountData = document.querySelector(".accountData");
+
+
+function dataAccount()
+{
+var data = "";
+
+
+return fetch("../includes/ShowAccountData.includes.php",{
+  method:"POST",
+}).
+then(response => response.json()).
+then(response => {
+  data += `<h2 class="users_name">Имя пользователя: ${response[0].users_name}</h2>
+  <h2 class="users_surname">Фамилия пользователя: ${response[0].users_surname}</h2>
+  <h2 class="users_email">Почта пользователя:${response[0].users_email}</h2>`;
+  accountData.innerHTML = data;
+})
+}
+
+
+
+
 function addAccountNews() {
 
-let main = document.querySelector("main");
+
 var data = "";
 return fetch("../includes/showAccountNews.includes.php",{
   method:"POST",
@@ -30,11 +55,11 @@ then(response => {
 data +='</div>';
 if (data == '<div class=Bottom_content></div>')
 {
-  main.innerHTML = '<h2>К сожалению, у вас нет ни одной добавленной новости</h2>Хотите <a href="../../Add_News/templates/addNews.php">Добавить новость?</a>';
+  accountNews.innerHTML = '<h2>К сожалению, у вас нет ни одной добавленной новости</h2>Хотите <a href="../../Add_News/templates/addNews.php">Добавить новость?</a>';
 }
 else
  {
-  main.innerHTML = data;
+  accountNews.innerHTML = data;
 }
 
 
@@ -63,7 +88,7 @@ for (element of blockDataId)
 
 window.onload = function()
 {
-
+dataAccount();
   addAccountNews();
 
 
