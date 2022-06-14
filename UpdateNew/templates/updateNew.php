@@ -16,7 +16,7 @@ if (!isset($_SESSION['email']))
   <meta charset="utf-8"/>
 <?php include_once "../../wrapper/wrapper-ConnectionCss.php"; ?>
 <link rel="stylesheet" href="css/updatenew.css">
-  <title>Главная страница</title>
+  <title>Редактирование статьи</title>
 </head>
 <body>
 <?php include_once "../../wrapper/wrapper-header.php"; ?>

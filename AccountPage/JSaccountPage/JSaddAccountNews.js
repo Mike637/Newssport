@@ -13,9 +13,10 @@ return fetch("../includes/ShowAccountData.includes.php",{
 }).
 then(response => response.json()).
 then(response => {
-  data += `<h2 class="users_name">Имя пользователя: ${response[0].users_name}</h2>
-  <h2 class="users_surname">Фамилия пользователя: ${response[0].users_surname}</h2>
-  <h2 class="users_email">Почта пользователя:${response[0].users_email}</h2>`;
+  data += `<h1 class="users_name">Имя пользователя: <strong>${response[0].users_name}</strong></h1>
+  <h1 class="users_surname">Фамилия пользователя: <strong>${response[0].users_surname}</strong></h1>
+  <h1 class="users_email">Почта пользователя:<strong>${response[0].users_email}<strong></h1>`;
+
   accountData.innerHTML = data;
 })
 }
@@ -55,7 +56,7 @@ then(response => {
 data +='</div>';
 if (data == '<div class=Bottom_content></div>')
 {
-  accountNews.innerHTML = '<h2>К сожалению, у вас нет ни одной добавленной новости</h2>Хотите <a href="../../Add_News/templates/addNews.php">Добавить новость?</a>';
+  accountNews.innerHTML = '<p id ="NoNews"><strong>К сожалению, у вас нет ни одной добавленной новости</strong></p><p id ="LinkAddNews">Хотите <a href="../../Add_News/templates/addNews.php">Добавить новость?</a></p>';
 }
 else
  {

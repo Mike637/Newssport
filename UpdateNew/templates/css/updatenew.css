@@ -10,8 +10,14 @@ h3,h1 {
   color:#0a0303fa;
 }
 
+h1#title
+{
+  margin-left:40%;
+}
+
 h3#text {
   margin-top:5px;
+  width:80%;
 }
 
 .img

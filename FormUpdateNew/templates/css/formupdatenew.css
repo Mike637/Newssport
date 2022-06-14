@@ -117,6 +117,9 @@ z-index:1;
 
 }
 
+.button:hover
+{cursor:pointer; }
+
 form p input[type="file"]:hover {
   cursor:pointer;
 }

@@ -16,11 +16,11 @@ $this->text = $text;
   {
     session_start();
 
-    $sql = "INSERT INTO sportcomments(sportComments_author,sportComments_text,sportComments_New_id) VALUES(?,?,?)";
+    $sql = "INSERT INTO sportcomments(sportComments_author,sportComments_text,sportComments_New_id,sportComments_time) VALUES(?,?,?,?)";
   $stmt = $this->connect()->prepare($sql);
 
   try {
-    $stmt->execute(array($_SESSION["email"],$this->text,$_GET['id']));
+    $stmt->execute(array($_SESSION["email"],$this->text,$_GET['id'],time()));
     echo "Успех";
   }
   catch (Exception $e)

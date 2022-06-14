@@ -87,7 +87,7 @@
       return fetch("../../registration_login/includes/logout.includes.php").
       then(() => {
         alert("Вы успешно удалили сессию");
-        window.location.reload();
+        window.location.href = "../../Main/templates/main.php";
       })
 
 }

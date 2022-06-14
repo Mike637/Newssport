@@ -26,7 +26,7 @@ if (!response.ok)
 
 
  jsonResponse = await response.json();
- data+=`<h1>${jsonResponse.img_title}</h1>`;
+ data+=`<h1 id="title">${jsonResponse.img_title}</h1>`;
  data += `<div class="img">`;
  data += `<img src="../../Add_News/img/${jsonResponse.img_photoname}" alt="picture_is_not_found">`;
  data +=`</div>`;

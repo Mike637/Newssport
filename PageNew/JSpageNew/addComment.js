@@ -87,6 +87,11 @@ comments.appendChild(document.createElement("hr"));
       p_TextComment.innerText = `Комментарий: ${response[key].sportComments_text}`;
       div.appendChild(p_TextComment);
 
+      var p_TimeComment = document.createElement("p");
+      p_TimeComment.className = "TimeComment";
+      p_TimeComment.innerText = `Добавлено: ${AddDateNew(response[key].sportComments_time)}`;
+      div.appendChild(p_TimeComment);
+
       if (p_AuthComment.innerText.substr(6).trim() == sessionEmail)
       {
 
@@ -262,5 +267,65 @@ parentSpan.style.display = "inline-block";
 }
 
 }
+
+}
+
+
+
+
+function AddDateNew(utcDate)
+{
+  var UtcDateConvert = convertUtcDate(utcDate);
+  var data = ` ${UtcDateConvert[0]} ${UtcDateConvert[1]} ${UtcDateConvert[2]} года в ${UtcDateConvert[3]}:${UtcDateConvert[4]}`;
+  return data;
+}
+
+function convertUtcDate(utcDate)
+{
+  var dateList = [];
+  var date = new Date(utcDate*1000);
+var dayNumber = date.getDate();
+var month = date.getMonth();
+  var year = date.getFullYear();
+
+
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+var listMonthNames = ["Января", "Февраля", "Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря"];
+if (dayNumber < 10)
+{
+  dateList.push(`0${dayNumber}`);
+}
+
+else {
+  dateList.push(`${dayNumber}`);
+}
+
+dateList.push(`${listMonthNames[month]}`);
+
+dateList.push(`${year}`);
+
+if (hour < 10)
+{
+  dateList.push(`0${hour}`);
+}
+
+else
+{
+  dateList.push(`${hour}`);
+}
+
+
+if (minute < 10)
+{
+  dateList.push(`0${minute}`);
+}
+
+else
+{
+  dateList.push(`${minute}`);
+}
+
+return dateList;
 
 }

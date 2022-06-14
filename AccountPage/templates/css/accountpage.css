@@ -1,36 +1,60 @@
 main {
-  display:flex;
+  display:block;
   width:90%;
 padding:0 5%;
 background-color:yellow;
+
 }
 
 
 main .accountData
 {
-  border:2px solid black;
-  width:40%;
-  height:300px;
+  padding-bottom:10px;
+
+  width:50%;
+  height:100px;
+  margin-left:calc(55%/2);
 }
 
 
+main .accountData strong
+{
+  color:red;
+}
+
+main p#NoNews  {
+  color:white;
+  margin-top:10px;
+  margin-left:calc(50%/2);
+  font-size:16pt;
+}
+
+main p#LinkAddNews
+{
+  margin-top:10px;
+  margin-left:calc(80%/2);
+  color:green;
+  font-weight:bold;
+  font-size:14pt;
+}
+
 main  .Bottom_content {
-border:2px solid black;
-  width:30%;
-  height:330px;
+
+  width:50%;
+  height:500px;
 display:block;
 flex-direction:row;
 flex-wrap: wrap;
   justify-content: space-between;
-
+margin-left:calc(55%/2);
 grid-template-columns: repeat(3,1fr);
-  margin-top:0px;
+  margin-top:20px;
   overflow:scroll;
 }
 
 main .Bottom_content .Container_Bottom_content
 {
-  width:25%;
+  width:100%;
   border:2px solid silver;
   height:550px;
 overflow:hidden;
